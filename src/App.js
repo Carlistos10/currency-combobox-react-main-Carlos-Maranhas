@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import CurrencyComboBox from './components/CurrencyComboBox'; // Ajusta la ruta según la estructura de carpetas de tu proyecto
-import CurrencyComboBoxCustom from './components/CurrencyComboBoxCustom';
+import ExchangeCard from './components/ExchangeCard';
+import InsertExchange from './components/InsertExchange';
 const currencies = {
   "USD": {
     "emoji": "\uD83C\uDDFA\uD83C\uDDF8",
@@ -124,37 +124,49 @@ const App = () => {
     // Puedes realizar acciones adicionales cuando se selecciona una moneda, si es necesario.
   };
 
+  const handleAddExchange = (exchange) => {
+    const newExchange = {
+      ...exchange,
+      id: Math.random().toString(36).substring(7),
+    };
+    setExchanges([...exchanges, newExchange]);
+  };
+
+  const handleDeleteExchange = (id) => {
+    const filteredExchanges = exchanges.filter((exchange) => exchange.id !== id);
+    setExchanges(filteredExchanges);
+  };
 
   return (
-    <div>
-      <h1>Selected Currency: {selectedOriginCurrency}</h1>
-      {selectedOriginCurrency &&
-        <img
-          alt={selectedOriginCurrency}
-          src={"/img/flags/" + currencies[selectedOriginCurrency].flag}>
-        </img>
-      }
-      <CurrencyComboBox
-        currencies={currencies}
-        onSelectCurrency={handleSelectOriginCurrency}
-        label={"Origin Currency:"}
-      />
-      <h1>Selected Currency: {selectedDestinationCurrency}</h1>
-      {selectedDestinationCurrency &&
-        <img
-          alt={selectedDestinationCurrency}
-          src={"/img/flags/" + currencies[selectedDestinationCurrency].flag}>
-        </img>
-      }
-      <CurrencyComboBoxCustom
-        currencies={currencies}
-        onSelectCurrency={handleSelectDestinationCurrency}
-        label="Destination currency:"
-      />
-    </div>
+    <div className="app">
+      <div className="header">
+        <h1>Conversor de Monedas</h1>
+      </div>
+      <div className="main-content">
+        <div className="insert-exchange">
+          <InsertExchange
+            currencies={currencies}
+            onAddExchange={handleAddExchange}
+          />
+        </div>
+        <div className="exchange-list rowcv">
+          {exchanges.map((exchange) => (
+            <ExchangeCard
+              key={exchange.id}
+              codOrigen={exchange.codOrigen}
+              codDest={exchange.codDest}
+              amount={exchange.amount}
+              exchangeRateOrigen={currencies[exchange.codOrigen].exchangeRate}
+              exchangeRateDestino={currencies[exchange.codDest].exchangeRate}
+              exchangeFlagOrigen={currencies[exchange.codOrigen].flag}
+              exchangeFlagDestino={currencies[exchange.codDest].flag}
+              onDeleteExchange={() => handleDeleteExchange(exchange.id)}
+            />
+          ))}
+        </div>
+      </div >
+    </div >
   );
-
-
 
 };
 
