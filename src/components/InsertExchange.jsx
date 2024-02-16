@@ -37,8 +37,8 @@ const InsertExchange = ({ currencies, onAddExchange }) => {
 
         onAddExchange(newExchange);
 
-        setCodOrigen(Object.keys(currencies)[0]);
-        setCodDest(Object.keys(currencies)[1]);
+        setCodOrigen(Object.keys(currencies));
+        setCodDest(Object.keys(currencies));
         setAmount();
     };
 
