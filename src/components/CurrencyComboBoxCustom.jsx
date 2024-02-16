@@ -15,10 +15,12 @@ const CurrencyComboBoxCustom = ({ currencies, onSelectCurrency, label }) => {
       <label>{label}</label>
       <div
         style={{
-          border: '1px solid #ccc',
+          border: '2px solid #d27c2c',
           padding: '5px',
-          width: '150px',
+          width: '85%',
           cursor: 'pointer',
+          borderRadius: '10px',
+          textAlign: 'center', display: 'flex', alignItems: 'center'
         }}
         onClick={() => setShowOptions(!showOptions)}
       >
@@ -27,9 +29,9 @@ const CurrencyComboBoxCustom = ({ currencies, onSelectCurrency, label }) => {
             <img
               src={`/img/flags/${currencies[selectedCurrency].flag}`}
               alt={selectedCurrency}
-              style={{ marginRight: '5px', width: '25px', height: '18px' }}
+              style={{ marginRight: '30%', width: '9%', }}
             />
-            {currencies[selectedCurrency].name}
+            <div style={{ textAlign: 'center' }}>{currencies[selectedCurrency].name}</div>
           </>
         ) : (
           'Select a Currency'
@@ -44,6 +46,7 @@ const CurrencyComboBoxCustom = ({ currencies, onSelectCurrency, label }) => {
             position: 'absolute',
             zIndex: '1',
             backgroundColor: '#fff',
+            borderRadius: '5px',
           }}
         >
           {Object.keys(currencies).map((currencyCode) => (
@@ -53,6 +56,7 @@ const CurrencyComboBoxCustom = ({ currencies, onSelectCurrency, label }) => {
               style={{
                 padding: '5px',
                 cursor: 'pointer',
+                borderRadius: '5px',
               }}
             >
               <img

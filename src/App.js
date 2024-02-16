@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
+import './App.css';
 import ExchangeCard from './components/ExchangeCard';
 import InsertExchange from './components/InsertExchange';
+
 const currencies = {
   "USD": {
     "emoji": "\uD83C\uDDFA\uD83C\uDDF8",
@@ -92,8 +94,8 @@ const currencies = {
     "name": "Mexican Peso",
     "flag": "mx.png"
   }
-  // Puedes agregar más códigos de moneda, emojis de banderas, nombres de moneda y nombres de archivos de banderas según tus necesidades
-}
+};
+
 const initialExchanges = [
   {
     id: 1001,
@@ -107,21 +109,19 @@ const initialExchanges = [
     codDest: "JPY",
     amount: 2
   }
-]
+];
 
 const App = () => {
   const [selectedOriginCurrency, setSelectedOriginCurrency] = useState(null);
   const [selectedDestinationCurrency, setSelectedDestinationCurrency] = useState(null);
-  const [exchanges, setExchanges] = useState(initialExchanges)
+  const [exchanges, setExchanges] = useState(initialExchanges);
 
   const handleSelectOriginCurrency = (currency) => {
     setSelectedOriginCurrency(currency);
-    // Puedes realizar acciones adicionales cuando se selecciona una moneda, si es necesario.
   };
 
   const handleSelectDestinationCurrency = (currency) => {
     setSelectedDestinationCurrency(currency);
-    // Puedes realizar acciones adicionales cuando se selecciona una moneda, si es necesario.
   };
 
   const handleAddExchange = (exchange) => {
@@ -142,20 +142,34 @@ const App = () => {
       <div className="header">
         <h1>Conversor de Monedas</h1>
       </div>
-      <div className="main-content rowcv">
-        <div className="insert-exchange rowcv">
+      <div className="main-content">
+        <div className="insert-exchange">
+          <img className="logo"
+            src={`/img/icono.png`}
+          />
           <InsertExchange
             currencies={currencies}
             onAddExchange={handleAddExchange}
           />
         </div>
         <div className="exchange-list rowcv">
-
+          {exchanges.map((exchange) => (
+            <ExchangeCard
+              key={exchange.id}
+              codOrigen={exchange.codOrigen}
+              codDest={exchange.codDest}
+              amount={exchange.amount}
+              exchangeRateOrigen={currencies[exchange.codOrigen].exchangeRate}
+              exchangeRateDestino={currencies[exchange.codDest].exchangeRate}
+              exchangeFlagOrigen={currencies[exchange.codOrigen].flag}
+              exchangeFlagDestino={currencies[exchange.codDest].flag}
+              onDeleteExchange={() => handleDeleteExchange(exchange.id)}
+            />
+          ))}
         </div>
       </div >
     </div >
   );
-
 };
 
 export default App;

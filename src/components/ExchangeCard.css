@@ -1,0 +1,89 @@
+.exchange-card-figma {
+    background-color: rgba(170, 197, 94, 0.5199999809);
+    border-radius: 1.3rem;
+    height: 100px;
+    left: 0;
+    margin-top: 20px;
+    height: 80%;
+}
+
+.card-header {
+    display: flex;
+    margin: 10px;
+}
+
+.card-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 10px;
+}
+
+.delete-button {
+    background-color: transparent;
+    border: none;
+    color: #999;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    margin: 10px;
+    padding: 0;
+}
+
+.card-body {
+    font-size: 16px;
+    margin: 10px;
+}
+
+.rowcv {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.tercio {
+    width: 28%;
+    align-items: center;
+    padding-left: 10px;
+}
+
+.foto {
+    padding-left: 30%;
+    padding-right: 20%;
+    padding-top: 20%;
+    align-items: center;
+}
+
+.izq {
+    padding-left: 10%;
+}
+
+.flecha {
+    margin-top: 30px;
+}
+
+.esquina {
+    width: 9%;
+
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.mt-14 {
+    margin-top: 14px;
+}
+
+.col-2 {
+    margin-left: 20px;
+    margin-right: 20px;
+
+    width: 40%;
+}

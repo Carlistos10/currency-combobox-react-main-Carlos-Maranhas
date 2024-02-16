@@ -1,12 +1,50 @@
 .insert-exchange {
-    background-color: #f7f7f7;
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-color: #d27c2c;
 }
 
 .rowcv {
     display: flex;
-    justify-content: center;
     flex-wrap: wrap;
+}
+
+.izq {
+    text-align: left;
+}
+
+.peque {
+    width: 15%;
+    height: 20px;
+    border-radius: 10px;
+    border-color: #d27c2c;
+
+}
+
+.btn {
+    height: 35px;
+    background-color: #d27c2c;
+    font-size: 20px;
+    color: white;
+}
+
+.grand {
+    width: 30%;
+    height: 20px;
+    border-radius: 10px;
+    border-color: #d27c2c;
+}
+
+.blanc {
+    color: #fffee1;
+}
+
+.amount {
+    width: 90%;
+    height: 32px;
+}
+
+.fecha {
+    height: 30px;
+    width: 45px;
 }

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './InsertExchange.css';
 import CurrencyComboBoxCustom from './CurrencyComboBoxCustom';
 
 const InsertExchange = ({ currencies, onAddExchange }) => {
@@ -37,35 +38,50 @@ const InsertExchange = ({ currencies, onAddExchange }) => {
 
         onAddExchange(newExchange);
 
-        setCodOrigen(Object.keys(currencies));
-        setCodDest(Object.keys(currencies));
+        setCodOrigen(Object.keys(currencies)[0]);
+        setCodDest(Object.keys(currencies)[1]);
         setAmount();
     };
 
     return (
-        <div className="insert-exchange rowcv">
-            <h3>Agregar cambio de moneda</h3>
+        <div className="insert-exchange">
+            <div className="rowcv">
+                <h3 className="peque">Amount:</h3>
+                <h3 className="grand">Origin currency:</h3>
+                <h3 className="grand">Destination Currency:</h3>
+                <h3 className="peque blanc">Boton</h3>
+            </div>
             <form onSubmit={handleSubmit} className="rowcv">
-                <input className="valor"
-                    type="number"
-                    id="amount"
-                    value={amount}
-                    onChange={handleChangeAmount}
+                <div className="peque">
+                    <input className='amount'
+                        type="number"
+                        id="amount"
+                        value={amount}
+                        onChange={handleChangeAmount}
+                    />
+                </div>
+                <div className="grand">
+                    <CurrencyComboBoxCustom
+                        currencies={currencies}
+                        onSelectCurrency={handleSelectCodOrigen}
+                        selectedCurrency={codOrigen}
+                    />
+                </div>
+
+                <img className="fecha"
+                    src={`/img/fechaeleccion.png`}
+                    width={75}
+                    height={50}
                 />
-                <label htmlFor="codOrigen" className="origen">Moneda de origen:</label>
-                <CurrencyComboBoxCustom
-                    currencies={currencies}
-                    onSelectCurrency={handleSelectCodOrigen}
-                    selectedCurrency={codOrigen}
-                />
-                <label htmlFor="codDest">Moneda de destino:</label>
-                <CurrencyComboBoxCustom
-                    currencies={currencies}
-                    onSelectCurrency={handleSelectCodDest}
-                    selectedCurrency={codDest}
-                />
-                <label htmlFor="amount">Cantidad:</label>
-                <button type="submit">Agregar</button>
+
+                <div className="grand">
+                    <CurrencyComboBoxCustom
+                        currencies={currencies}
+                        onSelectCurrency={handleSelectCodDest}
+                        selectedCurrency={codDest}
+                    />
+                </div>
+                <button className=" peque btn" type="submit">ADD</button>
             </form>
         </div>
     );
