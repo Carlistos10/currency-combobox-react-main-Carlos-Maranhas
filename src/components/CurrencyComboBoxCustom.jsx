@@ -1,15 +1,23 @@
 import React, { useState } from 'react';
 
 const CurrencyComboBoxCustom = ({ currencies, onSelectCurrency, label }) => {
+
+  // Almacenamos el código de divisa seleccionado, el cual al principio no tiene valor
   const [selectedCurrency, setSelectedCurrency] = useState(null);
   const [showOptions, setShowOptions] = useState(false);
 
+  // Aqui manejamos el extensible con cada click
   const handleCurrencyClick = (currency) => {
+    // Actualiza la moneda seleccionada
     setSelectedCurrency(currency);
+
+    // Notifica la moneda seleccionada
     onSelectCurrency(currency);
+
+    // Oculta la lista de opciones después de hacer click
     setShowOptions(false);
   };
-
+  //Aplicamos el estilo directamente en los divs, no usamos css en el combobox, ya que estaba una parte creada en el proyecto facilitado
   return (
     <div>
       <label>{label}</label>

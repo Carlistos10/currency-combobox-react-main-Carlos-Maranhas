@@ -1,6 +1,7 @@
 import React from 'react';
 import './ExchangeCard.css';
 
+//Recogemos todos los datos de la app
 const ExchangeCard = ({
     codOrigen,
     codDest,
@@ -11,6 +12,7 @@ const ExchangeCard = ({
     exchangeFlagDestino,
     onDeleteExchange,
 }) => {
+    //realizamos el cambio de moneda y ponemos que se muestren 3 decimales como máximo
     const amountDestino = ((amount * exchangeRateDestino) / exchangeRateOrigen).toFixed(3);
 
     return (

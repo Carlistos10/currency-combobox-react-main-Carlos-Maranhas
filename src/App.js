@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 import './App.css';
 import ExchangeCard from './components/ExchangeCard';
 import InsertExchange from './components/InsertExchange';
+//Primero importamos todo lo que vayamos a necesitar 
 
+//Aqui insertamos los datos de todas las monedas que queramos
 const currencies = {
   "USD": {
     "emoji": "\uD83C\uDDFA\uD83C\uDDF8",
@@ -96,6 +98,7 @@ const currencies = {
   }
 };
 
+//Aqui indicamos dos transacciones como ejemplo
 const initialExchanges = [
   {
     id: 1001,
@@ -111,6 +114,7 @@ const initialExchanges = [
   }
 ];
 
+
 const App = () => {
   const [selectedOriginCurrency, setSelectedOriginCurrency] = useState(null);
   const [selectedDestinationCurrency, setSelectedDestinationCurrency] = useState(null);
@@ -124,6 +128,7 @@ const App = () => {
     setSelectedDestinationCurrency(currency);
   };
 
+  //Aqui proporcionamos un id aleatorio para cada transaccion
   const handleAddExchange = (exchange) => {
     const newExchange = {
       ...exchange,
@@ -131,7 +136,7 @@ const App = () => {
     };
     setExchanges([...exchanges, newExchange]);
   };
-
+  //Aqui procedemos a eliminar la transaccion basandonos en el id
   const handleDeleteExchange = (id) => {
     const filteredExchanges = exchanges.filter((exchange) => exchange.id !== id);
     setExchanges(filteredExchanges);
@@ -147,12 +152,14 @@ const App = () => {
           <img className="logo"
             src={`/img/icono.png`}
           />
+          {/*Aqui llamamos al InsertExchange para recoger los datos*/}
           <InsertExchange
             currencies={currencies}
             onAddExchange={handleAddExchange}
           />
         </div>
         <div className="exchange-list rowcv">
+          {/*Aqui recogemos los datos de las monedas para usarlas en el ExchangeCard*/}
           {exchanges.map((exchange) => (
             <ExchangeCard
               key={exchange.id}
