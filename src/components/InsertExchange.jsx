@@ -1,3 +1,7 @@
+import React, { useState } from 'react';
+import './InsertExchange.css';
+import CurrencyComboBoxCustom from './CurrencyComboBoxCustom';
+
 const InsertExchange = ({ currencies, onAddExchange }) => {
 
     // Guardamos el código de la moneda de origen y destino seleccionadas
