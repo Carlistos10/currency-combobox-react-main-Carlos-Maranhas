@@ -39,19 +39,6 @@
   }
 }
 
-.rowcv {
-  display: flex;
-  justify-content: center;
-  max-width: 10%;
-}
-
-.container {
-  width: 80%;
-  margin: 0 auto;
-}
-
-.col-2 {
-  margin-top: 20px;
-  width: 49%;
-  display: flex;
+.logo {
+  float: left;
 }

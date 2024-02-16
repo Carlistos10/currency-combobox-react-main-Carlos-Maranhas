@@ -23,7 +23,7 @@ const InsertExchange = ({ currencies, onAddExchange }) => {
         event.preventDefault();
 
         if (!codOrigen || !codDest || !amount) {
-            return alert('Debes completar todos los campos');
+            return alert('Debes poner unos nuevos datos');
         }
 
         if (codOrigen === codDest) {
