@@ -142,27 +142,15 @@ const App = () => {
       <div className="header">
         <h1>Conversor de Monedas</h1>
       </div>
-      <div className="main-content">
-        <div className="insert-exchange">
+      <div className="main-content rowcv">
+        <div className="insert-exchange rowcv">
           <InsertExchange
             currencies={currencies}
             onAddExchange={handleAddExchange}
           />
         </div>
         <div className="exchange-list rowcv">
-          {exchanges.map((exchange) => (
-            <ExchangeCard
-              key={exchange.id}
-              codOrigen={exchange.codOrigen}
-              codDest={exchange.codDest}
-              amount={exchange.amount}
-              exchangeRateOrigen={currencies[exchange.codOrigen].exchangeRate}
-              exchangeRateDestino={currencies[exchange.codDest].exchangeRate}
-              exchangeFlagOrigen={currencies[exchange.codOrigen].flag}
-              exchangeFlagDestino={currencies[exchange.codDest].flag}
-              onDeleteExchange={() => handleDeleteExchange(exchange.id)}
-            />
-          ))}
+
         </div>
       </div >
     </div >
